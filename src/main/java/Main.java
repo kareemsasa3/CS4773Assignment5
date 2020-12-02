@@ -4,10 +4,12 @@ import mediator.Mediator;
 public class Main {
 
     public static void main(String[] args) {
-        Mediator mediator = new Mediator();
-        mediator.press2();
-        mediator.press1();
-        mediator.press3();
-        mediator.press1();
+        Elevator elevator = new Elevator();
+        elevator.press2();
+        elevator.press1();
+        elevator.press3();
+        elevator.press1();
+
+
     }
 }
