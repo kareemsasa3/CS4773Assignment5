@@ -1,64 +1,38 @@
 package model;
 
 import mediator.Mediator;
-import state.Floor1;
-import state.Floor2;
-import state.Floor3;
-
 
 public class Elevator {
-    private int currentFloor;
     private Mediator mediator;
 
-
     public Elevator() {
-        this.mediator = new Mediator();
-        this.setCurrentFloor(1);
-        press1 = new Floor1();
-        press2 = new Floor2();
-        press3 = new Floor3();
+        this.setMediator(new Mediator(this));
     }
 
-    public int getCurrentFloor() {
-        return currentFloor;
+    @Override
+    public String toString() {
+        return "Elevator";
     }
-
-    public void setCurrentFloor(int currentFloor) {
-        this.checkCurrentFloor(currentFloor);
-        this.currentFloor = currentFloor;
-    }
-
-    public void checkCurrentFloor(int currentFloor) {
-        if (this.getCurrentFloor() == currentFloor)
-            System.out.println("Nothing happens");
-    }
-
 
     public void press1() {
-        press1.press();
-        //door.setDoorOpen(false);
-       // elevator.setCurrentFloor(1);
+        mediator.press1();
     }
 
     public void press2() {
         mediator.press2();
-
-        /*
-        door.setDoorOpen(false);
-        System.out.println("Moving to floor 2");
-        elevator.setCurrentFloor(2);
-         */
     }
 
     public void press3() {
-        press3.press();
-        /*
-        elevator.setCurrentFloor(3);
-         */
+        mediator.press3();
     }
 
+    // accessors
 
+    public Mediator getMediator() {
+        return mediator;
+    }
 
-
-
+    public void setMediator(Mediator mediator) {
+        this.mediator = mediator;
+    }
 }
